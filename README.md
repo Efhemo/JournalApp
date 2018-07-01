@@ -28,26 +28,19 @@ For Google Authentification & Firebase you need to use your own google-services.
 ### Extra
 [Firebase google login](https://www.youtube.com/watch?v=Duz_0XkWP2I)
 
-
 ### Installing
 
 install application demo. 
 [download demo](https://github.com/Efhemo/JournalApp/blob/d156fb47ef160f233b8effbe5b8103084dc44888/app/release/journal_app.apk)
----
 
 ### And coding style tests
 
 used expresso recording on the Android studio to test the UI. 
 just follow on Android studio RUN>Recored Espresso test
 
-
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
-
-
-## Contributing
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ### Authors
 Efhemo 
