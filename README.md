@@ -5,8 +5,8 @@ A journal Application where users can pen down their thoughts and feelings. Also
 This project comprises of implementation of recyclerview that each item is a diary added by the user. users can choose to delete or modify. You may clone the repo to your local machine and build your own app with Android Studio or just install the demo apk within the repo
 
 ## screenshot
-https://github.com/Efhemo/JournalApp/blob/master/app/image/Screenshot_20180701-162357.png 
-https://github.com/Efhemo/JournalApp/blob/master/app/image/Screenshot_20180701-162407.png
+<img src ="https://github.com/Efhemo/JournalApp/blob/master/app/image/Screenshot_20180701-162357.png" width="280"/>
+<img src =https://github.com/Efhemo/JournalApp/blob/master/app/image/Screenshot_20180701-162407.png width="280"/>
 
 ### Prerequisites
 
@@ -28,7 +28,7 @@ For Google Authentification & Firebase you need to use your own google-services.
 ### Extra
 [Firebase google login](https://www.youtube.com/watch?v=Duz_0XkWP2I)
 
- ---
+
 ### Installing
 
 install application demo. 
@@ -49,13 +49,13 @@ just follow on Android studio RUN>Recored Espresso test
 ## Contributing
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-###Authors
+### Authors
 Efhemo 
 
-#License
+# License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/Efhemo/JournalApp/blob/master/LICENSE) file for details
 
-##Acknowledgments
+## Acknowledgments
 Thanks to anyone whose whose code was used
 AlcWithGoogle
 Andela community
