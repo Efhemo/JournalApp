@@ -12,13 +12,14 @@ import com.example.efhemo.journalapp.model.TaskEntry;
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String LOG_TAG = AppDatabase.class.getSimpleName();
-    private static final String DATABASE_NAME = "moviedb"; //
+    private static final String DATABASE_NAME = "jounaldb"; //
     private static final Object LOCK = new Object();
     private static AppDatabase sInstance;
 
     public static AppDatabase getsInstance(Context context){
         if (sInstance == null) {
-            synchronized (LOCK){   //restrict instantiation of object to one (this pattern)
+            //restrict instantiation of object to one
+            synchronized (LOCK){
                 Log.d(LOG_TAG, "Creating new database instance");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         AppDatabase.class, AppDatabase.DATABASE_NAME)

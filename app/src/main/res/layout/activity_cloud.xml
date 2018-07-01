@@ -47,15 +47,6 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <!--<TextView
-            android:layout_marginLeft="4dp"
-            android:text="@string/start_your_journey"
-            android:visibility="invisible"
-            android:id="@+id/start_journey"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />-->
     </FrameLayout>
 
 

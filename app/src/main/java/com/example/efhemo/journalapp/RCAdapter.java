@@ -31,11 +31,11 @@ public class RCAdapter extends RecyclerView.Adapter<RCAdapter.RCViewHolder>  {
     final private OneItemClickListener mItemClickListener;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    List<TaskEntry> mTaskEntries;
-    Context context;
+    private List<TaskEntry> mTaskEntries;
+    private Context context;
 
-    String emailIntent;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String emailIntent;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public RCAdapter(Context context, OneItemClickListener oneItemClickListener){
         this.context = context;

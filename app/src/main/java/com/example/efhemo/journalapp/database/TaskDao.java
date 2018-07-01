@@ -1,7 +1,5 @@
 package com.example.efhemo.journalapp.database;
 
-/*class that we help us access read and write to the database (Also, delete and update)*/
-
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

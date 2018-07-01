@@ -21,8 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class MainActivity extends BaseActivity implements
-        View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     public static final int RC_SIGN_IN = 19057;
@@ -46,9 +45,8 @@ public class MainActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Views
 
-        // Button listeners
+        //Google sign in button
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
         //START initialize_auth
@@ -65,15 +63,12 @@ public class MainActivity extends BaseActivity implements
             }
         };
 
+        GoogleSignInOptions gso = new SetUpGoogleSign().invoke();
+        setupGoogleClient(gso);
 
-        //START config_signin
-        // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        // [END config_signin]
+    }
 
+    private void setupGoogleClient(GoogleSignInOptions gso) {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
@@ -82,8 +77,7 @@ public class MainActivity extends BaseActivity implements
                     }
                 })
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build(); //
-
+                .build();
     }
 
 
@@ -94,7 +88,6 @@ public class MainActivity extends BaseActivity implements
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            //Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             GoogleSignInResult result  = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
                     if(result.isSuccess()) {
                         GoogleSignInAccount account = result.getSignInAccount();
@@ -102,10 +95,8 @@ public class MainActivity extends BaseActivity implements
                     }else {
                         // Google Sign In failed, update UI appropriately
                         Log.w(TAG, "Google sign in failed");
-
-                        // [START_EXCLUDE]
                         updateUI(null);
-                        // [END_EXCLUDE]
+
                     }
         }
     }
@@ -117,11 +108,11 @@ public class MainActivity extends BaseActivity implements
 
     //START auth_with_google
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-        // [START_EXCLUDE silent]
-        showProgressDialog();
-        // [END_EXCLUDE]
 
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+        showProgressDialog();
+
+        //Get Google api Client credentials
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -147,17 +138,13 @@ public class MainActivity extends BaseActivity implements
 
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
-        if (user != null) { //suceesful (intent)
 
-            String useremail  = user.getEmail();
-            String userId= user.getUid();
+        if (user != null) { //suceesful sign user
+
             Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-            /*intent.putExtra("email", useremail);
-            intent.putExtra("id", userId);*/
             startActivity(intent);
 
         } else { //not succesful
-
             Toast.makeText(MainActivity.this,"Authentication Failed." , Toast.LENGTH_LONG).show();
 
         }
@@ -171,8 +158,12 @@ public class MainActivity extends BaseActivity implements
         }
     }
 
-    public void shortCut(View view) {
-        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-        startActivity(intent);
+    private class SetUpGoogleSign {
+        public GoogleSignInOptions invoke() {
+            return new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.default_web_client_id))
+                        .requestEmail()
+                        .build();
+        }
     }
 }

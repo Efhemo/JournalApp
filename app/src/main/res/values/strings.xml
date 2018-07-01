@@ -27,6 +27,8 @@
     <string name="start_your_journey">Start Your Journey</string>
     <string name="push_to_cloud">Push to cloud</string>
     <string name="delete_in_popup">Delete</string>
+    
+    <string name="cloud_title">CLOUD DOCUMENT</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

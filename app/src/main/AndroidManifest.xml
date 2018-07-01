@@ -22,16 +22,11 @@
             android:name=".Main2Activity"
             android:exported="true"
             android:launchMode="singleTop"/>
-        <activity android:name=".AddJournalActivity" />
-        <activity android:name=".UpdateTaskActivity"
-            />
-        <activity android:name=".CloudActivity"
-            >
 
-            <!--<meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Main2Activity"/>-->
-        </activity>
+        <activity android:name=".AddJournalActivity" />
+        <activity android:name=".UpdateTaskActivity"/>
+        <activity android:name=".CloudActivity"/>
+
     </application>
 
 </manifest>

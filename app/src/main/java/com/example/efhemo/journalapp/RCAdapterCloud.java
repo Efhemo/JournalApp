@@ -44,7 +44,7 @@ public class RCAdapterCloud extends RecyclerView.Adapter<RCAdapterCloud.RCCloudV
      */
     public void setTasks(List<TaskEntry> taskEntries) {
         mTaskEntries = taskEntries;
-        //notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     public List<TaskEntry> getTasks() {
@@ -64,7 +64,7 @@ public class RCAdapterCloud extends RecyclerView.Adapter<RCAdapterCloud.RCCloudV
         return mTaskEntries.size();
     }
 
-    public class RCCloudViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class RCCloudViewHolder extends RecyclerView.ViewHolder {
 
         /*Viewholder*/
         TextView textViewTitle;
@@ -78,12 +78,7 @@ public class RCAdapterCloud extends RecyclerView.Adapter<RCAdapterCloud.RCCloudV
             textViewDescription = itemView.findViewById(R.id.description_text);
             textViewDate = itemView.findViewById(R.id.date_text);
             itemView.findViewById(R.id.pop_up_menu).setVisibility(View.GONE);
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
-
-        }
     }
 }

@@ -1,6 +1,5 @@
 package com.example.efhemo.journalapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,11 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddJournalActivity extends AppCompatActivity implements
-        View.OnClickListener {
-
-
-
+public class AddJournalActivity extends AppCompatActivity implements View.OnClickListener {
 
     AppDatabase mDb;
 
@@ -40,26 +35,6 @@ public class AddJournalActivity extends AppCompatActivity implements
         buttonSave = findViewById(R.id.save_button);
         buttonSave.setOnClickListener(this);
 
-
-
-
-
-                    //TODO
-        Intent intent = getIntent();
-
-
-    }
-
-
-
-    private void populateUI(TaskEntry task) {
-        if (task == null) {
-            return;
-        }
-
-        editTextTitle.setText(task.getJournalTitle());
-        editTextDescription.setText(task.getJournalDescription());
-        //setPriorityInViews(task.getPriority());
     }
 
 
@@ -71,21 +46,20 @@ public class AddJournalActivity extends AppCompatActivity implements
 
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        /*Convert Date datatype to String*/
+
+        /*Convert Date date type to String*/
         String formattedDate = df.format(c);
 
         /*Check if each Entry is null*/
         if (myTitle.isEmpty() || myWrite.isEmpty()) {
-            //Todo: put Stack bar instead of toast
             Toast.makeText(this, "All field must be filled", Toast.LENGTH_SHORT).show();
-            //Snackbar.make(this,  "All field must be filled", Snackbar.LENGTH_SHORT).show();
             return;
         }
 
-        TaskEntry taskEntry = new TaskEntry(myTitle, myWrite, formattedDate); //Todo: i can come back to change it to Data and time
-
+        TaskEntry taskEntry = new TaskEntry(myTitle, myWrite, formattedDate);
         extractJsonAnotherThread(taskEntry);
 
+        //finish Activity immediately, after each entry
         finish();
     }
 

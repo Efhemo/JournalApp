@@ -23,10 +23,8 @@ public class UpdateTaskActivity extends AppCompatActivity implements View.OnClic
     // Extra for the task ID to be received after rotation
     public static final String SAVEINSTANCE_KEY = "instance_key";
 
-
     AppDatabase mDb;
     Intent intent;
-
 
     Bundle bundle;
     private int itemId;
@@ -37,6 +35,7 @@ public class UpdateTaskActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_task);
 
+        //initialize soem view here
         intiliazeViews();
         buttonSave = findViewById(R.id.update_button);
         buttonSave.setOnClickListener(this);
@@ -55,7 +54,6 @@ public class UpdateTaskActivity extends AppCompatActivity implements View.OnClic
             // populate the UI and get some other value
             titleUpdate.setText(bundle.getString("name"));
             writeUpdate.setText(bundle.getString("description"));
-
             itemId = bundle.getInt("identi");
             day = bundle.getString("day");
 
@@ -68,13 +66,14 @@ public class UpdateTaskActivity extends AppCompatActivity implements View.OnClic
         writeUpdate = findViewById(R.id.edit_write_update);
     }
 
-    //the intent data sent should survive on rotation changes TODO
+    //The intent data sent should survive on rotation changes TODO
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putBundle(SAVEINSTANCE_KEY, bundle);
         super.onSaveInstanceState(outState);
     }
 
+    //setup onCLick for update button
     @Override
     public void onClick(View view) {
 
@@ -84,7 +83,6 @@ public class UpdateTaskActivity extends AppCompatActivity implements View.OnClic
         if (myTitle.isEmpty() || myWrite.isEmpty()) {
             //Todo: put Stack bar instead of toast
             Toast.makeText(this, "All field must be filled", Toast.LENGTH_SHORT).show();
-            //Snackbar.make(this,  "All field must be filled", Snackbar.LENGTH_SHORT).show();
             return;
         }
 
@@ -92,7 +90,6 @@ public class UpdateTaskActivity extends AppCompatActivity implements View.OnClic
         AppExecutors.getsInstance().getDiskIO().execute(new Runnable() {
             @Override
             public void run() {
-
                 task.setID(itemId);
                 mDb.taskDao().updateJournalTask(task);
                 finish();

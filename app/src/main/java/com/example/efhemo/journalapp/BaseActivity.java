@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+/*
+* Class that will do work for login progress in MainActivity
+* */
 public class BaseActivity extends AppCompatActivity {
 
     @VisibleForTesting
